@@ -58,7 +58,7 @@
         <div class="content-wrap">
             <nav class="navbar navbar-expand-lg navbar-light bg-light-gray shadow" style="border-top: 1px solid hsl( var(--clr-dark) ); border-bottom: 3px solid hsl( var(--clr-dark) );">
                 <div class="navbar-brand ml-5">
-                    <h1 onclick="window.location.replace(`inactive_users.html`);">Account Adminstration</h1>
+                    <h1 onclick="window.location.replace(`./inactive_users.html`);">Account Adminstration</h1>
                 </div>
                 <ul class="navbar-nav ml-auto text-white">
                     <li class="nav-item hide-when-small">
@@ -145,7 +145,7 @@
 
     function transferAssets() {
         let user = document.getElementById("creator-select").value;
-        window.location.replace(`assets_transferred.html#${user}`);
+        window.location.replace(`./assets_transferred.html#${user}`);
     }
 
     function sendInactivityNotifications() {
