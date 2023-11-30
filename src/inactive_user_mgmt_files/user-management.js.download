@@ -1,0 +1,44 @@
+let peopleSearch = document.getElementById('people-search');
+let clearSearchLink = document.getElementById('clear-search-link');
+let unorderedList = document.getElementsByClassName('list')[0];
+let emptyListMessage = document.getElementById('empty-list-message');
+
+function showMessageIfNoResults() {
+    if (unorderedList.children.length === 0)
+        emptyListMessage.style.display = 'inline-block';
+    else
+        emptyListMessage.style.display = 'none';
+}
+
+function clearSearch() {
+    clearSearchLink.style.display = 'none';
+    peopleSearch.value = '';
+
+    // peopleList is the object that list.js uses defined in js/people-list-simple.js
+    peopleList.search(''); // Load full list again
+    showMessageIfNoResults();
+}
+
+function searchQuery(query) {
+    if (query == '') {
+        clearSearch();
+    }
+    else {
+        peopleSearch.value = query;
+        // peopleList is the object that list.js uses defined in js/people-list-simple.js
+        peopleList.search(query);
+        clearSearchLink.style.display = 'inline';
+        showMessageIfNoResults();
+    }
+}
+
+peopleSearch.addEventListener('focus', (ev) => {
+    clearSearch();
+});
+
+peopleSearch.addEventListener('focusout', (ev) => {
+    if (peopleSearch.value != '')
+        clearSearchLink.style.display = 'inline';
+    
+    showMessageIfNoResults();
+});

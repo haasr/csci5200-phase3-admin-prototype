@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<!-- saved from url=(0014)about:internet -->
+<html lang="en"><link type="text/css" rel="stylesheet" id="dark-mode-custom-link"><link type="text/css" rel="stylesheet" id="dark-mode-general-link"><style lang="en" type="text/css" id="dark-mode-custom-style"></style><style lang="en" type="text/css" id="dark-mode-native-style"></style><style lang="en" type="text/css" id="dark-mode-native-sheet"></style><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>EXIF - Account Administration</title>
+
+    <meta name="author" content="ETSU Dept of Computing">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex nofollow">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;700&family=Bellefair&family=Barlow:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter&family=MedievalSharp&display=swap" rel="stylesheet">
+
+    <link type="text/css" rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+    <link type="text/css" rel="stylesheet" href="./inactive_user_mgmt_files/index.css">
+    <link type="image/vnd" rel="icon" href="http://127.0.0.1:8000/static/img/favicon.ico">
+
+
+    <script type="application/javascript"
+    src="https://code.jquery.com/jquery-3.5.1.min.js"
+    integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
+    crossorigin="anonymous"></script>
+    <script type="application/javascript"
+    src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+    integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+    crossorigin="anonymous"></script>
+    <script
+    type="application/javascript"
+    src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+    integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+    crossorigin="anonymous"></script>
+    <style>
+        input[type=checkbox] {
+            width: 25px;
+            height: 25px;
+            margin-right: 10px;
+        }
+        .inactivity-notice-hide-initial {
+            display: none;
+        }
+        #alert-sending {
+            display: none;
+        }
+        #alert-sent {
+            display: none;
+        }
+        #assets-transferred-message{
+            display: none;
+        }
+    </style>
+</head>
+
+<body class="bg-white">
+    <div class="page-container">
+        <div class="content-wrap">
+            <nav class="navbar navbar-expand-lg navbar-light bg-light-gray shadow" style="border-top: 1px solid hsl( var(--clr-dark) ); border-bottom: 3px solid hsl( var(--clr-dark) );">
+                <div class="navbar-brand ml-5">
+                    <h1 onclick="window.location.replace(`inactive_users.html`);">Account Adminstration</h1>
+                </div>
+                <ul class="navbar-nav ml-auto text-white">
+                    <li class="nav-item hide-when-small">
+                        <a class="nav-link nav-dropbttn p-4 fs-200 text-center" title="User menu" onclick="toggleDropdown(&#39;profile-dropdown-content&#39;)" alt="Link to profile page" style="cursor: pointer;">
+                            <img class="ml-1" src="./inactive_user_mgmt_files/user-dark.png" width="42" style="display: inline;">
+                            <br>Geoffrey Roache
+                        </a>
+                        <div class="profile-dropdown-content nav-dropdown-content" id="profile-dropdown-content">
+                            <div class="row">
+                                <div class="col pt-2 pr-3 pb-2 pl-3 text-center"><a href="http://127.0.0.1:8000/users/logout/">Log out</a></div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="nav-item show-when-small">
+                        <a class="nav-link text-white" href="http://127.0.0.1:8000/users/logout/" alt="Link to Log out">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="1.6em" height="1.6em" fill="#ffffff" class="bi bi-door-open-fill" viewBox="0 0 16 16">
+                                <path d="M1.5 15a.5.5 0 0 0 0 1h13a.5.5 0 0 0 0-1H13V2.5A1.5 1.5 0 0 0 11.5 1H11V.5a.5.5 0 0 0-.57-.495l-7 1A.5.5 0 0 0 3 1.5V15H1.5zM11 2h.5a.5.5 0 0 1 .5.5V15h-1V2zm-2.5 8c-.276 0-.5-.448-.5-1s.224-1 .5-1 .5.448.5 1-.224 1-.5 1z"></path>
+                                </svg>
+                            <br>Log out
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+            <div style="margin: 50px auto 0;">
+                <div class="container-sm form-container">
+                    <div>
+                        <h2 class="text-center">Transfer Creator Assets: phil</h2>
+                        <div class="center text-center">
+                            <div class="row fs-450" style="margin-bottom: 110px;">
+                                <div class="col-8">
+                                    <label for="creators">Choose another Creator:</label>
+                                    <select name="creator" id="creator-select">
+                                      <option value="mcdougald">Drew McDougal</option>
+                                      <option value="darponge">Emanuel Darpong</option>
+                                      <option value="stresthaz">Zangam Strestha</option>
+                                      <option value="duluthz">Zireesha Duluth</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <p class="fs-450 br-8">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-cone-striped" viewBox="0 0 16 16">
+                                    <path d="m9.97 4.88.953 3.811C10.159 8.878 9.14 9 8 9c-1.14 0-2.158-.122-2.923-.309L6.03 4.88C6.635 4.957 7.3 5 8 5s1.365-.043 1.97-.12zm-.245-.978L8.97.88C8.718-.13 7.282-.13 7.03.88L6.275 3.9C6.8 3.965 7.382 4 8 4c.618 0 1.2-.036 1.725-.098zm4.396 8.613a.5.5 0 0 1 .037.96l-6 2a.5.5 0 0 1-.316 0l-6-2a.5.5 0 0 1 .037-.96l2.391-.598.565-2.257c.862.212 1.964.339 3.165.339s2.303-.127 3.165-.339l.565 2.257 2.391.598z"></path>
+                                </svg>&ensp;Are you sure you want to transfer Creator <span class="text-teal">phil</span>'s assets to the selected User?
+                            </p>
+                            <div class="gridbox-3">
+                                <div>
+                                    <button class="bttn-danger" type="button" onclick="javascript:window.location.replace(`./inactive_users.html`)">No, cancel action</button>
+                                </div>
+                                <div></div>
+                                <div>
+                                    <button class="bttn-primary" type="submit" onclick="transferAssets();">Yes, I'm sure</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <footer class="shadow text-right mt-1" style="min-height: 200px;">
+        <div class="mt-2" style="width: 86%;">
+            <img class="ml-auto" id="hide-on-small-phone" src="./inactive_user_mgmt_files/cyber-roach.gif" alt="CYBER ROACH" width="200" height="150">
+
+            ©&nbsp;2023, Team Cyber Roach
+        </div>
+    </footer>
+
+    <script type="application/javascript" src="./inactive_user_mgmt_files/navigation.js.download"></script>
+
+<script type="application/javascript" src="./inactive_user_mgmt_files/list.js.download"></script>
+<script type="application/javascript" src="./inactive_user_mgmt_files/people-list-simple.js.download"></script>
+<script type="application/javascript">
+    let inactivityNotices = document.getElementsByClassName("inactivity-notice-hide-initial");
+    let peopleSearch = document.getElementById('people-search');
+    let clearSearchLink = document.getElementById('clear-search-link');
+    let unorderedList = document.getElementsByClassName('list')[0];
+    let emptyListMessage = document.getElementById('empty-list-message');
+
+    let selectAllInput = document.getElementById('select-all-users');
+    let checkboxes = document.getElementsByClassName('checkbox-input');
+
+    $(document).ready(function() {
+        showMessageIfNoResults();
+    });
+
+    function transferAssets() {
+        let user = document.getElementById("creator-select").value;
+        window.location.replace(`assets_transferred.html#${user}`);
+    }
+
+    function sendInactivityNotifications() {
+        if (selectAllInput.checked) {
+            window.scrollTo(0, 0);
+
+            $('#alert-sending').css('display', 'block');
+
+            for (let i = 0; i < inactivityNotices.length; i++) {
+                setTimeout(() => {
+                    inactivityNotices[i].style.display = 'block';
+                }, 1000);
+            }
+
+            setTimeout(() => {
+                $('#alert-sent').css('display', 'block');
+            }, 2400);
+            selectAllInput.click();
+        }
+    }
+
+    function deleteSelectedUsers() {
+        if (selectAllInput.checked) {
+            Array.from(checkboxes).forEach((cb) => {
+                if (cb.checked) {
+                    let idSplit = cb.id.split('-');
+                    let id = `#${idSplit[0]}-${idSplit[1]}`;
+                    console.log(id);
+                    $(id).css('display', 'none');
+                }
+            });
+            selectAllInput.click();
+        }
+    }
+
+    function showMessageIfNoResults() {
+        if (unorderedList.children.length === 0)
+            emptyListMessage.style.display = 'inline-block';
+        else
+            emptyListMessage.style.display = 'none';
+    }
+
+    function clearSearch() {
+        clearSearchLink.style.display = 'none';
+        peopleSearch.value = '';
+
+        // peopleList is the object that list.js uses defined in js/people-list-simple.js
+        peopleList.search(''); // Load full list again
+        showMessageIfNoResults();
+    }
+
+    function searchQuery(query) {
+        if (query == '') {
+            clearSearch();
+        }
+        else {
+            peopleSearch.value = query;
+            // peopleList is the object that list.js uses defined in js/people-list-simple.js
+            peopleList.search(query);
+            clearSearchLink.style.display = 'inline';
+            showMessageIfNoResults();
+        }
+    }
+
+    peopleSearch.addEventListener('focus', (ev) => {
+        clearSearch();
+    });
+
+    peopleSearch.addEventListener('focusout', (ev) => {
+        if (peopleSearch.value != '')
+            clearSearchLink.style.display = 'inline';
+
+        showMessageIfNoResults();
+    });
+
+    selectAllInput.onchange = function(ev) {
+        let inactiveContainer = $('#inactive-users-container');
+        if (inactiveContainer.hasClass('bg-accent-light'))
+            inactiveContainer.removeClass('bg-accent-light');
+        else
+            inactiveContainer.addClass('bg-accent-light');
+
+        Array.from(checkboxes).forEach((cb) => {
+            cb.click();
+        });
+    }
+</script>
+
+
+
+</body></html>

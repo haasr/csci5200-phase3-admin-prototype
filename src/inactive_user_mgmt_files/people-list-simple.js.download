@@ -1,0 +1,10 @@
+let options = {
+    valueNames: [
+        'username',
+        'name',
+        'domain',
+        'account-status',
+    ]
+};
+
+const peopleList = new List('people-list-simple', options);

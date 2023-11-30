@@ -1,0 +1,30 @@
+function closeDropdowns() {
+    let dropdowns = document.getElementsByClassName("nav-dropdown-content");
+    let i;
+    for (i = 0; i < dropdowns.length; i++) {
+      let openDropdown = dropdowns[i];
+      console.log(i);
+      if (openDropdown.classList.contains('show')) {
+        openDropdown.classList.remove('show');
+      }
+    }
+}
+
+function toggleDropdown(id) {
+    closeDropdowns(); // First close dropdowns that could already be open.
+    document.getElementById(id).classList.toggle("show");
+}
+
+window.onclick = function(event) {
+    // Close the dropdown menu if the user clicks outside of it
+    if (! (event.target.matches('.nav-dropbttn') || event.target.matches('img')) ) {
+        console.log(event.target);
+        closeDropdowns();
+    }
+
+    // OR...if the user clicked somewhere in the SVG path, open the dropdown menu
+    else if (event.target.matches('path')) {
+        let parent = event.srcElement.parentElement;
+        parent.parentElement.click();
+    }
+}
